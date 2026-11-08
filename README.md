@@ -3,6 +3,7 @@
 Standards and lightweight inventory for applications maintained by ednillibanio. The catalog states expected outcomes; implementation belongs to each application and, once published, the personal `ci-workflows` repository. No reusable workflow is available from this catalog.
 
 - [Standards](docs/standards/README.md) cover contribution, iterations, review, documentation and CI/DevSecOps.
+- [Operator guide](docs/operations/operator-guide.md) explains how to use and maintain this repository.
 - [Catalog](catalog/README.md) describes the schema and registered apps.
 - [Iterations](iterations/README.md) track planned work and evidence.
 - [Provenance](PROVENANCE.md) records the design references.
