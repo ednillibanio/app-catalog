@@ -1,6 +1,6 @@
 # Stage 01: personal catalog
 
-Status: `doing`
+Status: `done`
 
 ## Objective and scope
 
@@ -16,4 +16,8 @@ Validate license, links and schema; ensure plan and master issue agree, provenan
 
 ## Result, evidence and pending work
 
-The public repository, master issue and catalog foundation PR are published and merged. The operator guide is being completed in a follow-up PR before this stage closes.
+Completed 2026-11-08. Created public repository and issue #1. Merged catalog foundation in [PR #2](https://github.com/ednillibanio/app-catalog/pull/2) and operator guide in [PR #3](https://github.com/ednillibanio/app-catalog/pull/3). Fixed stale sapl-next parent-issue reference in commit `f03921c`.
+
+Validation: Draft 2020-12 schema and app entry validated with jsonschema FormatChecker; local Markdown links checked; `git diff --check` passed. `technical-documentation` audit completed for the operator guide. Codex review round 1 requested tracking an out-of-scope plan mismatch; it was recorded and resolved in sapl-next. Final review approved. PR #3 had no CI checks configured. Linux and Windows were not tested.
+
+Pending work remains in `iterations/BACKLOG.md`: reconcile remaining records in stage 04.
