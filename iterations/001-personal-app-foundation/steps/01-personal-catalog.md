@@ -16,4 +16,4 @@ Validate license, links and schema; ensure plan and master issue agree, provenan
 
 ## Result, evidence and pending work
 
-In preparation. The master issue, public repository and PR remain pending. Draft documentation and validation are not publication or evidence of completed adoption.
+The public repository, master issue and catalog foundation PR are published and merged. The operator guide is being completed in a follow-up PR before this stage closes.
