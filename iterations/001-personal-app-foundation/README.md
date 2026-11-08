@@ -1,6 +1,6 @@
 # Iteration 001: personal app foundation
 
-Status: `doing` — stage 01 authorized and in preparation. Master issue: pending creation. Provisional tracker: [sapl-next #103](https://github.com/ednillibanio/sapl-next/issues/103). This draft becomes the source of truth after publication and reconciliation with that tracker.
+Status: `doing`. Master issue: [#1](https://github.com/ednillibanio/app-catalog/issues/1). Provisional tracker: [sapl-next #103](https://github.com/ednillibanio/sapl-next/issues/103), pending reconciliation.
 
 ## Objective and origin
 
@@ -19,8 +19,8 @@ Adopt personal application standards and reusable CI, using sapl-next as the fir
 | Stage | Status | Plan | Milestone |
 | --- | --- | --- | --- |
 | Preparation | `skipped` | [002 completion](steps/00-iteration-002.md) | Removed from critical path |
-| 01 | `doing` | [Personal catalog](steps/01-personal-catalog.md) | Catalog and master issue |
-| 02 | `todo` | [Reusable CI](steps/02-reusable-ci.md) | Validated and versioned interfaces |
+| 01 | `done` | [Personal catalog](steps/01-personal-catalog.md) | [PR #2](https://github.com/ednillibanio/app-catalog/pull/2), [PR #3](https://github.com/ednillibanio/app-catalog/pull/3) |
+| 02 | `doing` | [Reusable CI](steps/02-reusable-ci.md) | Validated and versioned interfaces |
 | 03 | `todo` | [Sapl-next adoption](steps/03-sapl-next-adoption.md) | Language PR and CI adoption |
 | 04 | `todo` | [Reconciliation and protection](steps/04-reconciliation.md) | Assigned pending work and approved protections |
 
@@ -36,4 +36,4 @@ Both public repositories are reviewed and versioned with provenance; hooks and w
 
 ## Result
 
-Pending. The full provisional plan remains at [sapl-next](https://github.com/ednillibanio/sapl-next/tree/dev/iterations/plano-adocao-pessoal) until the master issue and records are linked and reconciled.
+Stage 01 completed 2026-11-08: catalog and operator guide merged in PRs #2 and #3; schema, links and documentation were reviewed. Stage 02 is authorized and in progress. The full provisional plan remains at [sapl-next](https://github.com/ednillibanio/sapl-next/tree/dev/iterations/plano-adocao-pessoal) until the master issue and records are linked and reconciled.
