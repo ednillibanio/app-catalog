@@ -1,0 +1,8 @@
+minimum_pre_commit_version: "3.2.0"
+repos:
+  - repo: https://github.com/ednillibanio/ci-workflows
+    rev: v0.1.0
+    hooks:
+      - id: sem-env
+      - id: check-exec-bit
+      - id: check-shdoc

@@ -1,6 +1,6 @@
 # Operator guide
 
-This repository defines standards and records which personal applications adopt them. It does not run application builds or provide reusable CI workflows; those belong to each app and the planned `ci-workflows` repository.
+This repository defines standards and records which personal applications adopt them. It does not run application builds or host reusable CI workflows; those belong to each app and the published `ci-workflows` repository. This catalog consumes its versioned pre-commit hooks locally.
 
 ## Prepare a checkout
 
@@ -12,6 +12,17 @@ cd app-catalog
 ```
 
 The integration branch is `main`. To contribute, first identify an issue in this repository; cross-repository work should also have an issue in each affected repository, linked to the master issue. Create a short topic branch from the current `main`, make one focused change, validate it, and open a pull request to `main`. Do not edit application code from this catalog checkout.
+
+## Run repository hooks
+
+Install Git, Python 3, and `pre-commit` (for example, `pipx install pre-commit`). From the repository root, install the Git hook and validate all tracked files:
+
+```sh
+pre-commit install
+pre-commit run --all-files
+```
+
+The `.pre-commit-config.yaml` pins `sem-env`, `check-exec-bit`, and `check-shdoc` to the published `ci-workflows` tag `v0.1.0`. Keep real environment files out of the repository; only `.env.example` and `.env.prod.example` are allowed. The shell checks validate executable modes and documentation headers when shell scripts are present.
 
 ## Inspect app adoption
 
@@ -51,4 +62,4 @@ Start with [the standards index](../standards/README.md). The iteration workflow
 
 ## Current limitations
 
-The catalog currently has no automated CI or link checker. The personal reusable workflows are planned, not published. This guide describes repository files and workflows; it does not claim they have been exercised on Linux or Windows.
+The catalog has no automated CI or link checker. Its pre-commit hooks run locally; they do not replace a GitHub Actions workflow. The reusable workflows are published, but a real sapl-next consumer PR remains to be validated in stage 03. Linux and Windows validation are not claimed.
