@@ -26,6 +26,10 @@ Adopt personal application standards and reusable CI, using sapl-next as the fir
 
 Each stage requires its own authorization, validation, review, PR and recorded evidence; later stages are not authorized by this plan. Maintain separate PRs and issues per repository. Record platform limitations and risks.
 
+## Tracked alignment work
+
+- Update the provisional sapl-next plan so its issue-mother reference points to app-catalog issue [#1](https://github.com/ednillibanio/app-catalog/issues/1) while retaining sapl-next [#103](https://github.com/ednillibanio/sapl-next/issues/103) as the provisional tracker until records are reconciled. Owner: maintainer. Tracked by issues #1 and #103; resolve during reconciliation. The source plan is outside this catalog PR.
+
 ## Closure criteria
 
 Both public repositories are reviewed and versioned with provenance; hooks and workflows pass their tests and are exercised by test callers and a real sapl-next PR. Verify a documentation-only PR, resolved full SHAs, scanner failure behavior, `make check` parity and known IT reports. Required checks are protected only after approval. All pending work has an owner and issue. Audit docs, links and operational claims; apply the reviews required by each repository.

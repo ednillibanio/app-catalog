@@ -7,7 +7,7 @@ Standards and lightweight inventory for applications maintained by ednillibanio.
 - [Iterations](iterations/README.md) track planned work and evidence.
 - [Provenance](PROVENANCE.md) records the design references.
 
-The catalog uses `main`. App repositories can retain stricter local rules and their own integration branches. The initial adoption is tracked provisionally in [sapl-next #103](https://github.com/ednillibanio/sapl-next/issues/103); the catalog's master issue is pending creation.
+The catalog uses `main`. App repositories can retain stricter local rules and their own integration branches. The initial adoption is tracked provisionally in [sapl-next #103](https://github.com/ednillibanio/sapl-next/issues/103); the catalog's master issue is [#1](https://github.com/ednillibanio/app-catalog/issues/1).
 
 ## Validation
 
