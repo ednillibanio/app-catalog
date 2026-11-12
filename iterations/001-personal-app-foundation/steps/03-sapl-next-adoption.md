@@ -1,13 +1,19 @@
 # Stage 03: sapl-next adoption
 
-Status: `todo`
+Status: `done`
 
-First integrate a focused language and authority PR: translate active agent and contribution instructions, local review and Git rules, active standards, getting-started guides, active templates and canonical endpoint catalog. Explicitly change `AGENTS.md` language policy and matching iteration and Git rules; preserve Portuguese product text and domain identifiers. Track untranslated historical docs and untouched comments. Replace organizational normative references in active docs with the personal catalog, preserving stricter local sapl-next rules.
+## Scope and result
 
-Then adopt published, SHA-pinned hooks and lean workflow calls. Configure `pull_request` for `dev` and `main`, `push` for `dev` and scheduled dependency checks; remove Markdown `paths-ignore`. Retain PostgreSQL/Redis services; Dev Services is decided in [#81](https://github.com/ednillibanio/sapl-next/issues/81).
+Adopt the personal language, contribution and review policies and published CI interfaces in sapl-next while retaining stricter local requirements. Stage 03 completed through [PR #106](https://github.com/ednillibanio/sapl-next/pull/106) (language and authority), [PR #107](https://github.com/ednillibanio/sapl-next/pull/107) (published reusable CI adoption) and [PR #108](https://github.com/ednillibanio/sapl-next/pull/108) (documentation-only CI trigger validation). PR #108 merged to `dev` at `54d37610857b8347c5ba38e2394727f977fee2c0`.
 
-After cleanup, unit tests, frontend build/lint/test, hygiene, secrets and PR title are required. ITs, Semgrep and dependency findings start as informational with reports and issues; scanner infrastructure or execution failures must fail. Promote checks after findings are resolved. Compare with `make check`, validate a docs-only PR and SHA resolution, audit translation, links, examples and policy, and exercise every workflow in a real sapl-next PR. `portal-gabinete` has no test script; do not claim five-app test coverage. No installers, image publication, deployment or immediate promotion of security findings to blocking.
+## Evidence and limitations
 
-## Result, evidence and pending work
+- PR #108 run #47 was triggered by a Markdown-only change; all required checks passed.
+- PR #108 run #48 passed backend unit tests, frontend validation, repository hygiene, secret scan, PR title, Semgrep, security and dependency scans, and both SBOM jobs. The informational integration job ran 202 tests: 199 passed and three failed in `TramitacaoAdminResourceIT`; the failures remain separately tracked in [sapl-next #81](https://github.com/ednillibanio/sapl-next/issues/81).
+- The reusable backend workflow lacks PostgreSQL and Redis services, and the reusable secrets workflow does not pass `pull-requests: read`. Sapl-next therefore retains those local caller jobs with scoped permissions.
+- The local `make check` was not run because the Colima Docker socket was unavailable. Linux and Windows were not tested.
+- The PR recorded successful documentation audits and pre-push and pre-merge Codex reviews. Its hosted CI evidence and review record are in PR #108.
 
-Pending.
+## Deferred work
+
+Keep the three `TramitacaoAdminResourceIT` failures in iteration 004 #81. Other pending app CI work remains assigned to sapl-next issues #80–#84, #95, #97 and #99; Stage 04 reconciles these without expanding this adoption scope.
