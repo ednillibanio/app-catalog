@@ -1,6 +1,6 @@
 # Stage 04: reconciliation and protection
 
-Status: `doing`
+Status: `done`
 
 ## Objective and scope
 
@@ -8,7 +8,7 @@ Reconcile sapl-next #80–#84 and its accepted backlog without duplicating work.
 
 ## Tracker reconciliation
 
-On 2026-11-12, master issue [app-catalog #1](https://github.com/ednillibanio/app-catalog/issues/1) was updated: stages 01–03 are checked, Stage 04 is in progress, and `@ednillibanio` is assigned. The provisional [sapl-next #103](https://github.com/ednillibanio/sapl-next/issues/103) has the same stage state and owner. The user-reported installation restriction was removed, allowing the app-catalog tracker update.
+At the initial reconciliation snapshot on 2026-11-12, master issue [app-catalog #1](https://github.com/ednillibanio/app-catalog/issues/1) had stages 01–03 checked and Stage 04 in progress, and was assigned to `@ednillibanio`. The provisional [sapl-next #103](https://github.com/ednillibanio/sapl-next/issues/103) had the same stage state and owner. The user-reported installation restriction was removed, allowing the app-catalog tracker update.
 
 The current sapl-next reconciliation is:
 
@@ -46,8 +46,10 @@ Fresh API reads confirm active rulesets and `protected: true` for all target bra
 - The current sapl-next plan remains in its original checkout with unrelated user-owned `AGENTS.md` changes preserved. No tests were run for this documentation reconciliation.
 - Mac/Colima support was preserved. Linux and Windows were not tested.
 
-## Remaining work
+## Stage closeout (2026-11-12)
 
-- Keep Stage 04 in progress until the repository-specific plan updates are reviewed and merged and the trackers are reconciled with those results.
-- Keep app-catalog's master issue #1 and sapl-next #103 linked; close neither until the cross-repository records are consistent and the maintainer authorizes closure.
-- Follow separate approvals for commit, push, pull-request creation and merge. Do not update app-catalog directly on `main`.
+- App-catalog PR [#7](https://github.com/ednillibanio/app-catalog/pull/7) merged as `88b06dcfaab8c27875beab9833b0dcf48dd1de56`.
+- Sapl-next PR [#117](https://github.com/ednillibanio/sapl-next/pull/117) merged as `1cbd757bb193f2e956665e677a5c22ad863facb0`; run #50 passed the five required checks. The informational integration job's three failures remain separate in #81.
+- The app-catalog CI gap is assigned to [issue #8](https://github.com/ednillibanio/app-catalog/issues/8) as follow-up work outside this stage.
+- This closeout update records Stage 04 as complete. Reconcile and close app-catalog #1 and sapl-next #103 after this update merges.
+- The closeout documentation audit confirmed these merge records, the #8 follow-up, the separate #81 failures and all six relative links. Targeted pre-commit and `git diff --check` passed; the final Codex review result is recorded in this closeout PR.

@@ -22,13 +22,13 @@ Adopt personal application standards and reusable CI, using sapl-next as the fir
 | 01 | `done` | [Personal catalog](steps/01-personal-catalog.md) | [PR #2](https://github.com/ednillibanio/app-catalog/pull/2), [PR #3](https://github.com/ednillibanio/app-catalog/pull/3) |
 | 02 | `done` | [Reusable CI](steps/02-reusable-ci.md) | [PR #2](https://github.com/ednillibanio/ci-workflows/pull/2), [PR #3](https://github.com/ednillibanio/ci-workflows/pull/3), hook tag `v0.1.0` |
 | 03 | `done` | [Sapl-next adoption](steps/03-sapl-next-adoption.md) | sapl-next PRs [#106](https://github.com/ednillibanio/sapl-next/pull/106), [#107](https://github.com/ednillibanio/sapl-next/pull/107) and [#108](https://github.com/ednillibanio/sapl-next/pull/108) |
-| 04 | `doing` | [Reconciliation and protection](steps/04-reconciliation.md) | Tracker reconciliation and approved branch rules |
+| 04 | `done` | [Reconciliation and protection](steps/04-reconciliation.md) | Reconciliation and protections complete; final tracker closure follows the closeout record |
 
 Each stage requires its own authorization, validation, review, PR and recorded evidence; later stages are not authorized by this plan. Maintain separate PRs and issues per repository. Record platform limitations and risks.
 
 ## Tracked alignment work
 
-- Update the provisional sapl-next plan so its issue-mother reference points to app-catalog issue [#1](https://github.com/ednillibanio/app-catalog/issues/1) while retaining sapl-next [#103](https://github.com/ednillibanio/sapl-next/issues/103) as the provisional tracker until records are reconciled. Owner: maintainer. Tracked by issues #1 and #103; resolve during reconciliation. The source plan is outside this catalog PR.
+Stage 04 reconciles the provisional sapl-next plan with master issue [#1](https://github.com/ednillibanio/app-catalog/issues/1), while sapl-next [#103](https://github.com/ednillibanio/sapl-next/issues/103) remains its local tracker until the closeout records merge. See [stage 04](steps/04-reconciliation.md) for evidence. The missing app-catalog CI is assigned separately to [issue #8](https://github.com/ednillibanio/app-catalog/issues/8).
 
 ## Closure criteria
 
@@ -36,4 +36,4 @@ Both public repositories are reviewed and versioned with provenance; hooks and w
 
 ## Result
 
-Stage 01 completed 2026-11-08: catalog and operator guide merged in PRs #2 and #3; schema, links and documentation were reviewed. Stage 02 completed 2026-11-08: reusable CI merged in PRs #2 and #3, hook tag `v0.1.0` published, and all test callers passed in GitHub Actions. Stage 03 completed 2026-11-12 in sapl-next PRs #106–#108. Stage 04 is in progress: issue #1 now reflects the adoption and active protections; the pending-work reconciliation and evidence are recorded in [stage 04](steps/04-reconciliation.md). The full consumer implementation and validation record remains in [sapl-next](https://github.com/ednillibanio/sapl-next/tree/dev/iterations/plano-adocao-pessoal).
+Stage 01 completed 2026-11-08: catalog and operator guide merged in PRs #2 and #3; schema, links and documentation were reviewed. Stage 02 completed 2026-11-08: reusable CI merged in PRs #2 and #3, hook tag `v0.1.0` published, and all test callers passed in GitHub Actions. Stage 03 completed 2026-11-12 in sapl-next PRs #106–#108. Stage 04 reconciliation and protections were recorded in app-catalog PR #7 and sapl-next PR #117; both merged on 2026-11-12. Follow-up CI for this documentation-only repository is tracked separately in [issue #8](https://github.com/ednillibanio/app-catalog/issues/8). The consumer implementation and validation record remains in [sapl-next](https://github.com/ednillibanio/sapl-next/tree/dev/iterations/plano-adocao-pessoal).
