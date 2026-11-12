@@ -51,5 +51,5 @@ Fresh API reads confirm active rulesets and `protected: true` for all target bra
 - App-catalog PR [#7](https://github.com/ednillibanio/app-catalog/pull/7) merged as `88b06dcfaab8c27875beab9833b0dcf48dd1de56`.
 - Sapl-next PR [#117](https://github.com/ednillibanio/sapl-next/pull/117) merged as `1cbd757bb193f2e956665e677a5c22ad863facb0`; run #50 passed the five required checks. The informational integration job's three failures remain separate in #81.
 - The app-catalog CI gap is assigned to [issue #8](https://github.com/ednillibanio/app-catalog/issues/8) as follow-up work outside this stage.
-- This closeout update records Stage 04 as complete. Reconcile and close app-catalog #1 and sapl-next #103 after this update merges.
+- App-catalog #1 and sapl-next #103 now mark Stage 04 complete and remain open while this closeout update is reviewed. Close both trackers after this update merges.
 - The closeout documentation audit confirmed these merge records, the #8 follow-up, the separate #81 failures and all six relative links. Targeted pre-commit and `git diff --check` passed; the final Codex review result is recorded in this closeout PR.
