@@ -11,7 +11,7 @@ import unicodedata
 from urllib.parse import unquote
 from pathlib import Path
 
-READER_ROOT_FILES = ("README.md", "CONTRIBUTING.md", "catalog/README.md")
+READER_ROOT_FILES = ("README.md", "CONTRIBUTING.md")
 PT = ".pt-BR.md"
 
 

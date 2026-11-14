@@ -11,3 +11,7 @@ English | [Português](README.pt-BR.md)
 | [CI and DevSecOps](ci-devsecops.md) | Required outcomes and implementation boundary |
 
 The maintainer owns these standards. A repository declares stricter local requirements in its own agent instructions and review notes; those requirements continue to apply there. Exceptions must identify owner, reason, scope, expiry or review date, and tracking issue.
+
+## Using these standards
+
+An application repository links to the standards it follows, in the language it uses, and may pin a commit or tag. It records its stricter local rules and its exceptions in its own repository. This repository does not list or track the applications that use it.

@@ -2,7 +2,7 @@ English | [Português](operator-guide.pt-BR.md)
 
 # Operator guide
 
-This repository defines standards and records which personal applications adopt them. It does not run application builds or host reusable CI workflows; those belong to each app and the published `ci-workflows` repository. This catalog consumes its versioned pre-commit hooks locally.
+This repository defines reusable standards for application repositories. It does not track the applications that use them, run application builds or host reusable CI workflows; those belong to each app and the published `ci-workflows` repository. This catalog consumes its versioned pre-commit hooks locally.
 
 ## Prepare a checkout
 
@@ -26,30 +26,9 @@ pre-commit run --all-files
 
 The `.pre-commit-config.yaml` pins `sem-env`, `check-exec-bit`, and `check-shdoc` to the published `ci-workflows` tag `v0.1.0`. Keep real environment files out of the repository; only `.env.example` and `.env.prod.example` are allowed. The shell checks validate executable modes and documentation headers when shell scripts are present.
 
-## Inspect app adoption
+## Validate links
 
-Each `catalog/apps/*.json` file describes an app's repository, accountable owner, adoption status, tracking issue, and any documented exceptions. `planned`, `in-progress`, and `adopted` describe catalog adoption only; they do not report application health or prove that a CI workflow ran. Check the linked issue and evidence before relying on a status. Exceptions must state scope, reason, owner, review date, and issue.
-
-## Validate catalog data and links
-
-Use Python 3 with the `jsonschema` package installed. From the repository root, run:
-
-```sh
-python - <<'PY'
-import json
-from pathlib import Path
-from jsonschema import Draft202012Validator, FormatChecker
-
-schema = json.loads(Path("catalog/app.schema.json").read_text())
-Draft202012Validator.check_schema(schema)
-validator = Draft202012Validator(schema, format_checker=FormatChecker())
-for entry in Path("catalog/apps").glob("*.json"):
-    validator.validate(json.loads(entry.read_text()))
-    print(f"Valid: {entry}")
-PY
-```
-
-A successful run prints each valid entry and exits with status 0. Invalid JSON or a schema violation raises an error and exits nonzero. Validate local Markdown links as part of review with the check in [Maintain both languages](#maintain-both-languages); no CI job runs it yet.
+Validate local Markdown links as part of review with the check in [Maintain both languages](#maintain-both-languages); no CI job runs it yet.
 
 ## Maintain standards and iterations
 
@@ -69,12 +48,9 @@ A clean run prints `OK:` with the number of language pairs and exits with status
 
 ## Troubleshooting
 
-- `ModuleNotFoundError: No module named 'jsonschema'`: install `jsonschema` into the Python environment used for validation, then rerun the command.
-- Schema validation fails: check required fields and the allowed `status` values in [`catalog/app.schema.json`](../../catalog/app.schema.json); validate URLs and exception fields.
-- An adoption status looks stale: inspect the tracking issue and ask its owner to update the catalog with current evidence.
-- A link is broken: correct the source Markdown or catalog URL and rerun the relevant validation before opening the PR.
+- A link is broken: correct the source Markdown and rerun the relevant validation before opening the PR.
 - The language check reports a missing pair or a heading-count mismatch: create or complete the other language's file so both have the same sections, then rerun the check.
 
 ## Current limitations
 
-The catalog has no automated CI. Its pre-commit hooks and the language and link check (`scripts/check_docs.py`) run locally; they do not replace a GitHub Actions workflow. The reusable workflows are published, but a real sapl-next consumer PR remains to be validated in stage 03. Linux and Windows validation are not claimed.
+The catalog has no automated CI. Its pre-commit hooks and the language and link check (`scripts/check_docs.py`) run locally; they do not replace a GitHub Actions workflow. Linux and Windows validation are not claimed.

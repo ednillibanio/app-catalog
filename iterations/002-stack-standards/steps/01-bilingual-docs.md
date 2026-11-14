@@ -1,6 +1,6 @@
 # Stage 01: bilingual docs
 
-Status: `doing`
+Status: `done`
 
 ## Objective and scope
 
@@ -41,8 +41,8 @@ Apply decisions D1–D4 of the [iteration](../README.md) and keep the catalog's 
 | --- | --- |
 | `python3 scripts/check_docs.py` | `OK: 10 language pairs, 37 Markdown files`, exit 0 |
 | Negative tests on a copy of the repository | Reported a missing pair, an empty pair file, missing switch, heading-count mismatch, broken links (titled, reference, balanced parentheses, percent-encoded, after a fence), broken and duplicate-suffix anchors, a tracked file deleted from the working tree, and English links from a Portuguese file; ignored links in backtick, tilde and longer fences and in single- and multi-line inline code; handled a filename with a space; exit 1 |
-| Code blocks of `operator-guide.md`/`.pt-BR.md` and `catalog/README.md`/`.pt-BR.md` | Identical |
-| Catalog schema check from the operator guide (`uv run --no-project --with jsonschema`) | `Valid: catalog/apps/sapl-next.json` |
+| Code blocks of `operator-guide.md`/`.pt-BR.md` and `catalog/README.md`/`.pt-BR.md` (the latter removed in stage 02) | Identical |
+| Catalog schema check from the operator guide (`uv run --no-project --with jsonschema`) | `Valid: catalog/apps/<app>.json` (one entry; the app name was redacted in stage 02, which also retired the schema check) |
 | `pre-commit run --files` on every changed and new file, before commit | Passed (`sem-env` and `check-shdoc`: no files to check) |
 | `pre-commit run --all-files` after commit `c13fce1`, with the new files tracked | Passed (`sem-env` and `check-shdoc`: no files to check) |
 | Hosted checks | None: this repository has no workflow until [#8](https://github.com/ednillibanio/app-catalog/issues/8) |
@@ -63,11 +63,11 @@ Codex records are in `.agent-runs/codex-reviews/` (ignored by Git).
 
 ### Out-of-scope findings for triage
 
-- `iterations/001-personal-app-foundation/README.md:3` is still `doing`, although master issue #1 is closed and all its stages are done or skipped.
-- `iterations/README.md:3` still says sapl-next #103 "remains the provisional tracker until reconciliation"; stage 04 of iteration 001 completed the reconciliation.
-- `iterations/BACKLOG.md` keeps the sapl-next #103 reconciliation row, resolved in iteration 001 stage 04.
-- `docs/operations/operator-guide.md` "Current limitations" says a real sapl-next consumer PR "remains to be validated in stage 03"; iteration 001 stage 03 validated it (sapl-next PR #108). The Portuguese file mirrors the same sentence.
+- `iterations/001-personal-app-foundation/README.md:3` is still `doing`, although master issue #1 is closed and all its stages are done or skipped. Resolved in stage 02: the iteration 001 records were removed.
+- `iterations/README.md:3` still says the consuming app's provisional tracker "remains the provisional tracker until reconciliation"; stage 04 of iteration 001 completed the reconciliation. Resolved in stage 02.
+- `iterations/BACKLOG.md` keeps the consuming app's reconciliation row, resolved in iteration 001 stage 04. Resolved in stage 02: the row was removed.
+- `docs/operations/operator-guide.md` "Current limitations" says a real consumer PR "remains to be validated in stage 03"; iteration 001 stage 03 validated it. The Portuguese file mirrors the same sentence. Resolved in stage 02: the sentence was removed.
 
-### Pending
+### Result
 
-Committed in `c13fce1`. Push, pull request and merge, each with its own approval; then this stage becomes `done`.
+Merged in [PR #17](https://github.com/ednillibanio/app-catalog/pull/17) as `aacc0fb` on 2026-11-14 (squash of `c13fce1` and `c500442`); pre-merge `codex-review` round `11-bilingual-premerge-001` APPROVE, with one low finding (this record still listed the push and PR as pending), resolved by this closeout in stage 02. [#11](https://github.com/ednillibanio/app-catalog/issues/11) closed.
