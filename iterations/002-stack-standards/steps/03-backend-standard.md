@@ -111,8 +111,14 @@ Every numbered subsection of the source is either in the catalog or stays local.
 | `codex-review`, round `12-backend-013` | CHANGES REQUESTED, 2 findings, fixed in both languages: request bodies carry `@NotNull @Valid` (§6.3, §6.4); the summary test command keeps Maven's exit status with `pipefail` (§9.5) |
 | `codex-review`, round `12-backend-014` | CHANGES REQUESTED, 1 finding: the plan reviews were not recorded; added above |
 | `codex-review`, round `12-backend-015` | APPROVE, no findings |
+| `codex-review` pre-push, round `12-prepush-001` on `46465ce` | APPROVE, no findings |
+| `technical-documentation` audit (pre-push) | Not rerun: the content is the stage-end audit's plus the fixes reviewed by Codex rounds 008–015 |
+
+### Pull request
+
+[#20](https://github.com/ednillibanio/app-catalog/pull/20), from commit `46465ce`. `gh pr checks 20`: no hosted checks until [#8](https://github.com/ednillibanio/app-catalog/issues/8).
 
 ### Pending
 
-- Close #18 and tick stage 02 in the #16 checklist (each with its own approval).
-- Commit, push, pull request and merge, each with its own approval.
+- Merge #20 (with approval); then this stage becomes `done`.
+- Close #18 and tick stages 02 and 03 in the #16 checklist (each with its own approval).
