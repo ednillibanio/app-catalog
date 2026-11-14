@@ -39,7 +39,7 @@ Todo ambiente suportado tem um guia (§11), um script de setup (§5), uma checag
 2. O `.env` nunca é commitado. O `.gitignore` o exclui e os hooks do repositório o rejeitam.
 3. O `.env.example` documenta toda variável: finalidade, valor padrão, quando mudar e quais comandos a leem. Uma variável lida mas ausente do `.env.example` é um defeito.
 4. O projeto funciona sem `.env`: toda variável tem um padrão de desenvolvimento no arquivo que a lê.
-5. O `.env` usa um subconjunto portável, que o Compose e um shell POSIX que carrega o arquivo leem do mesmo jeito: um `NOME=valor` por linha e comentários com `#` em linhas próprias. Um valor ou fica sem aspas e só tem letras, dígitos e os caracteres `_ . - / : , @ + =`, ou fica inteiro entre aspas simples ou duplas, sem `$`, barra invertida, crase, o próprio caractere de aspas nem quebra de linha dentro. Não há expansão de variáveis, substituição de comandos, sequências de escape nem valores em várias linhas. O `.env.example` e o `.env` usam fim de linha LF, porque um shell mantém o retorno de carro no valor: o `.gitattributes` garante isso para o `.env.example` (§9), e a checagem doctor aponta um `.env` que tenha retornos de carro (§6).
+5. O `.env` usa um subconjunto portável, que o Compose e um shell POSIX que carrega o arquivo leem do mesmo jeito: um `NOME=valor` por linha, com um nome feito de letras, dígitos e sublinhados que não começa com dígito, e comentários com `#` em linhas próprias. Um valor ou fica sem aspas e só tem letras, dígitos e os caracteres `_ . - / : , @ + =`, ou fica inteiro entre aspas simples ou duplas, sem `$`, barra invertida, crase, o próprio caractere de aspas nem quebra de linha dentro. Não há expansão de variáveis, substituição de comandos, sequências de escape nem valores em várias linhas. O `.env.example` e o `.env` usam fim de linha LF, porque um shell mantém o retorno de carro no valor: o `.gitattributes` garante isso para o `.env.example` (§9), e a checagem doctor aponta um `.env` que tenha retornos de carro (§6).
 6. O executor de tarefas e o arquivo do Compose leem o mesmo `.env`. Um valor derivado de outras variáveis (por exemplo, uma URL montada a partir de uma porta) é calculado num lugar só, em geral no executor de tarefas.
 7. A aplicação documenta a precedência quando uma variável já está definida no shell. No exemplo abaixo, um comando rodado pelo executor de tarefas usa o valor do `.env`, porque carrega o `.env` antes de chamar o Compose, enquanto uma chamada direta ao Compose deixa o valor do shell vencer.
 8. Um comando direto que não passa pelo executor de tarefas (por exemplo, a ferramenta de build rodada de uma subpasta) precisa das variáveis que lê definidas no shell. O guia compartilhado as lista.
@@ -145,7 +145,12 @@ node_matches_nvmrc() {
 check "container runtime responds" "start the container runtime" docker info
 check "Compose is available" "install the Compose plugin" docker compose version
 env_has_lf_endings() {
-  [[ ! -f .env ]] || ! grep -q $'\r' .env
+  [[ -e .env || -L .env ]] || return 0
+  [[ -f .env && -r .env ]] || return 1
+  local status=0
+  grep -q $'\r' .env || status=$?
+  # grep exits 1 when no carriage return is found; 0 or an error fails.
+  [[ "$status" -eq 1 ]]
 }
 
 check "Node matches .nvmrc" "run the setup command" node_matches_nvmrc
@@ -235,6 +240,7 @@ clean-data: ## DESTRUCTIVE: stop the services and delete their data volumes
 4. Uma configuração de que um ambiente precisa e que os outros toleram fica no arquivo versionado, com um comentário que diz o ambiente e o motivo. Quem está em outro ambiente não a remove.
 5. Numa VM, a aplicação documenta onde fica a árvore de trabalho. Um clone dentro da VM é a opção quando pastas compartilhadas causam problemas com links simbólicos, permissões ou desempenho. No WSL2, mantenha a árvore de trabalho no sistema de arquivos do Linux, e não em `/mnt/c`, como a documentação do WSL da Microsoft recomenda por desempenho.
 6. Scripts de shell, o arquivo do executor de tarefas e outros arquivos que rodam no Linux mantêm fins de linha LF em qualquer checkout, inclusive no Windows; o `.gitattributes` garante isso.
+7. Um script de shell POSIX rodado diretamente, como um script de setup ou de doctor ou o wrapper Unix da ferramenta de build (`mvnw`), começa com um shebang e fica no Git com modo `100755`. Uma biblioteca de shell que outros scripts carregam com `source` não tem shebang e fica com modo `100644`. Scripts PowerShell e batch não usam shebang nem o modo executável. No Windows o Git costuma rodar com `core.fileMode=false` e não registra o modo sozinho, então quem contribui de lá o define com `git update-index --chmod=+x <arquivo>`. Os hooks do repositório conferem os modos.
 
 ```yaml
 services:
@@ -340,6 +346,7 @@ Ilustrativo: as primeiras linhas de dois guias.
 | Remover uma configuração de que outro ambiente precisa | Um comentário com o ambiente e o motivo |
 | Um guia que afirma que um ambiente funciona sem tê-lo rodado | O estado de validação (§11) |
 | Scripts em dois idiomas | Ferramentas em inglês, um idioma por arquivo (§10) |
+| Um script de shell rodado diretamente mas guardado sem o modo executável | Modo `100755` no Git, definido com `git update-index --chmod=+x` no Windows (§9) |
 | Serviços publicados em todas as interfaces por padrão | `127.0.0.1` por padrão, publicação ampla opcional |
 
 ## 15. Checklist do pull request
@@ -350,7 +357,7 @@ Todo pull request que muda o ambiente de desenvolvimento segue as seções que s
 - [ ] As versões vêm dos arquivos de versão (§4).
 - [ ] Os passos de setup são idempotentes e aceitam `--dry-run`, e a checagem doctor continua só de leitura (§5, §6).
 - [ ] Os comandos comuns mantêm os mesmos nomes e efeitos em todos os ambientes (§8).
-- [ ] Configurações de que outro ambiente precisa foram mantidas (§9).
+- [ ] Configurações de que outro ambiente precisa foram mantidas, e scripts de shell novos estão com o modo certo no Git (§9).
 - [ ] Os arquivos de ferramentas estão em inglês, um idioma por arquivo (§10).
 - [ ] O pull request diz quais ambientes foram rodados e quais foram só revisados, com issues de acompanhamento (§12).
 - [ ] Os guias e o estado de validação deles batem com a mudança (§11).

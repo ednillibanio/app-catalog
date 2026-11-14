@@ -39,7 +39,7 @@ Every supported environment has a guide (§11), a setup script (§5), a doctor c
 2. `.env` is never committed. `.gitignore` excludes it, and the repository's hooks reject it.
 3. `.env.example` documents every variable: purpose, default, when to change it and which commands read it. A variable that is read but missing from `.env.example` is a defect.
 4. The project works without `.env`: every variable has a development default in the file that reads it.
-5. `.env` uses a portable subset that Compose and a POSIX shell sourcing the file read the same way: one `NAME=value` per line and `#` comments on their own lines. A value is either unquoted and made only of letters, digits and the characters `_ . - / : , @ + =`, or wrapped whole in single or double quotes, with no `$`, backslash, backtick, quote character or line break inside. There is no variable expansion, command substitution, escape sequence or multi-line value. `.env.example` and `.env` use LF line endings, because a shell keeps a carriage return in the value: `.gitattributes` enforces it for `.env.example` (§9), and the doctor check reports a `.env` that contains carriage returns (§6).
+5. `.env` uses a portable subset that Compose and a POSIX shell sourcing the file read the same way: one `NAME=value` per line, with a name made of letters, digits and underscores that does not start with a digit, and `#` comments on their own lines. A value is either unquoted and made only of letters, digits and the characters `_ . - / : , @ + =`, or wrapped whole in single or double quotes, with no `$`, backslash, backtick, quote character or line break inside. There is no variable expansion, command substitution, escape sequence or multi-line value. `.env.example` and `.env` use LF line endings, because a shell keeps a carriage return in the value: `.gitattributes` enforces it for `.env.example` (§9), and the doctor check reports a `.env` that contains carriage returns (§6).
 6. The task runner and the Compose file read the same `.env`. A value derived from other variables (for example, a URL built from a port) is computed in one place, usually the task runner.
 7. The application documents precedence when a variable is already set in the shell. In the example below, a command run through the task runner takes the `.env` value, because it sources `.env` before calling Compose, while a direct Compose call lets the shell value win.
 8. A direct command that bypasses the task runner (for example, the build tool run from a subfolder) needs the variables it reads set in the shell. The shared guide lists them.
@@ -145,7 +145,12 @@ node_matches_nvmrc() {
 check "container runtime responds" "start the container runtime" docker info
 check "Compose is available" "install the Compose plugin" docker compose version
 env_has_lf_endings() {
-  [[ ! -f .env ]] || ! grep -q $'\r' .env
+  [[ -e .env || -L .env ]] || return 0
+  [[ -f .env && -r .env ]] || return 1
+  local status=0
+  grep -q $'\r' .env || status=$?
+  # grep exits 1 when no carriage return is found; 0 or an error fails.
+  [[ "$status" -eq 1 ]]
 }
 
 check "Node matches .nvmrc" "run the setup command" node_matches_nvmrc
@@ -235,6 +240,7 @@ clean-data: ## DESTRUCTIVE: stop the services and delete their data volumes
 4. A setting that one environment needs and the others tolerate stays in the versioned file, with a comment that names the environment and the reason. It is not removed by a contributor in another environment.
 5. For a VM, the application documents where the working tree lives. A clone inside the VM is the option when shared folders cause problems with symlinks, permissions or performance. Under WSL2, keep the working tree in the Linux file system rather than under `/mnt/c`, as Microsoft's WSL documentation recommends for performance.
 6. Shell scripts, the task runner file and other files run inside Linux keep LF line endings on every checkout, including Windows; `.gitattributes` enforces it.
+7. A POSIX shell script that is run directly, such as a setup or doctor script or a build tool's Unix wrapper (`mvnw`), starts with a shebang and is stored in Git with mode `100755`. A shell library that other scripts load with `source` has no shebang and keeps mode `100644`. PowerShell and batch scripts do not use a shebang or the executable mode. Git on Windows usually runs with `core.fileMode=false` and does not record the mode by itself, so a contributor there sets it with `git update-index --chmod=+x <file>`. The repository's hooks check the modes.
 
 ```yaml
 services:
@@ -340,6 +346,7 @@ Illustrative: the first lines of two guides.
 | Removing a setting another environment needs | A comment naming the environment and the reason |
 | A guide that claims an environment works without a run | The validation state (§11) |
 | Scripts in two languages | English tooling, one language per file (§10) |
+| A shell script run directly but stored without the executable mode | Mode `100755` in Git, set with `git update-index --chmod=+x` on Windows (§9) |
 | Services published on every interface by default | `127.0.0.1` by default, opt-in wider binding |
 
 ## 15. Pull request checklist
@@ -350,7 +357,7 @@ Every pull request that changes the development environment follows the sections
 - [ ] Versions come from the pin files (§4).
 - [ ] Setup steps are idempotent and support `--dry-run`, and the doctor check stays read-only (§5, §6).
 - [ ] The common commands keep the same names and effects in every environment (§8).
-- [ ] Settings needed by another environment were kept (§9).
+- [ ] Settings needed by another environment were kept, and new shell scripts have the right mode in Git (§9).
 - [ ] Tooling files are in English, one language per file (§10).
 - [ ] The pull request says which environments were run and which were only reviewed, with tracking issues (§12).
 - [ ] The guides and their validation state match the change (§11).
