@@ -22,7 +22,7 @@ Approved by the maintainer on 2026-11-14.
 - D1: English is canonical. The Portuguese file is a maintained translation, changed in the same PR; a divergence is a defect fixed to match English.
 - D2: `name.md` (English) and `name.pt-BR.md` (Portuguese) sit side by side. Each starts with a reciprocal language switch. A Portuguese file links to translated documents in their Portuguese version and matching heading; links to English-only files, non-Markdown files and external URLs stay unchanged.
 - D3: bilingual = the reader-facing docs (`README.md`, `CONTRIBUTING.md`, `docs/**`) and every new standard. English only = `AGENTS.md`, `PROVENANCE.md`, `iterations/**`, issues, pull requests and commits.
-- D4: the catalog does not set an app's language. Each app states it in its own `AGENTS.md` and links to the catalog version in that language.
+- D4: the catalog does not set an app's language. Each app states it in its own `AGENTS.md` and links to the catalog version in that language. Refined on 2026-11-14 in stage 05: the catalog does not set an app's product or documentation language; tooling and automation (scripts, task runners, Compose files, `.env.example`, CI workflows) are written in English, one language per file; each app keeps a language map in its agent instructions.
 - D5: this iteration, with one stage per issue.
 - D6: this repository is independent and reusable, like `ci-workflows`. Application repositories link to it; it does not list, describe or track them. The app inventory and the records of iteration 001, which described one application's adoption, were removed in stage 02 and remain in the Git history.
 
@@ -33,8 +33,8 @@ Approved by the maintainer on 2026-11-14.
 | 01 | `done` | [Bilingual docs](steps/01-bilingual-docs.md) ([#11](https://github.com/ednillibanio/app-catalog/issues/11)) | [#17](https://github.com/ednillibanio/app-catalog/pull/17) |
 | 02 | `done` | [Independent catalog](steps/02-independent-catalog.md) ([#18](https://github.com/ednillibanio/app-catalog/issues/18)) | [#19](https://github.com/ednillibanio/app-catalog/pull/19) |
 | 03 | `done` | [Backend standard](steps/03-backend-standard.md) ([#12](https://github.com/ednillibanio/app-catalog/issues/12)) | [#20](https://github.com/ednillibanio/app-catalog/pull/20) |
-| 04 | `doing` | [Frontend standard](steps/04-frontend-standard.md) ([#13](https://github.com/ednillibanio/app-catalog/issues/13)) | pending |
-| 05 | `todo` | [Dev environment standard](steps/05-dev-environment-standard.md) ([#14](https://github.com/ednillibanio/app-catalog/issues/14)) | pending |
+| 04 | `done` | [Frontend standard](steps/04-frontend-standard.md) ([#13](https://github.com/ednillibanio/app-catalog/issues/13)) | [#21](https://github.com/ednillibanio/app-catalog/pull/21) |
+| 05 | `doing` | [Dev environment standard](steps/05-dev-environment-standard.md) ([#14](https://github.com/ednillibanio/app-catalog/issues/14)) | pending |
 
 Each stage requires its own approval, validation, review, pull request and recorded evidence.
 

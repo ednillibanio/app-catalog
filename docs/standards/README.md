@@ -11,6 +11,7 @@ English | [Português](README.pt-BR.md)
 | [CI and DevSecOps](ci-devsecops.md) | Required outcomes and implementation boundary |
 | [Java/Quarkus backend](java-quarkus-backend.md) | Layers, persistence, REST, security and tests for Java/Quarkus/Maven services |
 | [React/Vite frontend](react-vite-frontend.md) | Structure, data access, forms, design tokens, security and tests for React/Vite apps in a pnpm monorepo |
+| [Local development environment](dev-environment.md) | Supported environments, `.env`, setup, doctor, common commands and validation state of each environment guide |
 
 The maintainer owns these standards. A repository declares stricter local requirements in its own agent instructions and review notes; those requirements continue to apply there. Exceptions must identify owner, reason, scope, expiry or review date, and tracking issue.
 
