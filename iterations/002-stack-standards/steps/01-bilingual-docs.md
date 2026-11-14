@@ -43,7 +43,8 @@ Apply decisions D1–D4 of the [iteration](../README.md) and keep the catalog's 
 | Negative tests on a copy of the repository | Reported a missing pair, an empty pair file, missing switch, heading-count mismatch, broken links (titled, reference, balanced parentheses, percent-encoded, after a fence), broken and duplicate-suffix anchors, a tracked file deleted from the working tree, and English links from a Portuguese file; ignored links in backtick, tilde and longer fences and in single- and multi-line inline code; handled a filename with a space; exit 1 |
 | Code blocks of `operator-guide.md`/`.pt-BR.md` and `catalog/README.md`/`.pt-BR.md` | Identical |
 | Catalog schema check from the operator guide (`uv run --no-project --with jsonschema`) | `Valid: catalog/apps/sapl-next.json` |
-| `pre-commit run --files` on every changed and new file | Passed (`sem-env` and `check-shdoc`: no files to check) |
+| `pre-commit run --files` on every changed and new file, before commit | Passed (`sem-env` and `check-shdoc`: no files to check) |
+| `pre-commit run --all-files` after commit `c13fce1`, with the new files tracked | Passed (`sem-env` and `check-shdoc`: no files to check) |
 | Hosted checks | None: this repository has no workflow until [#8](https://github.com/ednillibanio/app-catalog/issues/8) |
 
 Platform: macOS only. The check uses only the Python 3 standard library and Git; Linux and Windows were not tested.
@@ -55,6 +56,7 @@ Platform: macOS only. The check uses only the Python 3 standard library and Git;
 | `technical-documentation` audit (plan) | 2 findings (Portuguese links to English-only files; provenance check for stages 02–04), both applied to the plan |
 | `technical-documentation` audit (change) | README validation paragraph did not mention the check; fixed in both languages |
 | `codex-review` plan, rounds `plano-cat-002-001`..`002` | CHANGES REQUESTED (5 findings, fixed), then APPROVE (1 low, fixed) |
+| `codex-review` pre-push of `c13fce1`, round `11-bilingual-prepush-001` | APPROVE; 2 low findings on this evidence (the all-files pre-commit run and the pending list), fixed in the follow-up commit |
 | `codex-review` change, rounds `11-bilingual-001`..`006` | Rounds 001–005 CHANGES REQUESTED, all on the check's Markdown parsing (file listing, fences, link forms, slugs, URL decoding, empty files, code spans), each fixed and retested; indented code and Setext headings documented as unsupported. Round 006 APPROVE, no findings; it compared all 10 pairs and found no omission or change of meaning |
 
 Codex records are in `.agent-runs/codex-reviews/` (ignored by Git).
@@ -68,4 +70,4 @@ Codex records are in `.agent-runs/codex-reviews/` (ignored by Git).
 
 ### Pending
 
-Commit, push, pull request and merge, each with its own approval; then this stage becomes `done`.
+Committed in `c13fce1`. Push, pull request and merge, each with its own approval; then this stage becomes `done`.
