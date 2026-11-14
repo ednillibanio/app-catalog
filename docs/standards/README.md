@@ -1,3 +1,5 @@
+English | [Português](README.pt-BR.md)
+
 # Standards
 
 | Standard | Purpose |

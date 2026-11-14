@@ -1,3 +1,5 @@
+English | [Português](review.pt-BR.md)
+
 # Review
 
 Review plans before approval, completed stages before closure, changes before push or pull request, and changes before an authorized merge. Check scope, correctness, risks, documentation and evidence. Record reviewer, findings, disposition and result in the stage or pull request. Review does not authorize an action.

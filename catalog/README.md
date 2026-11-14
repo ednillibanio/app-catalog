@@ -1,3 +1,5 @@
+English | [Português](README.pt-BR.md)
+
 # App catalog
 
 Each file under `apps/` is a JSON object validated against [app.schema.json](app.schema.json), using JSON Schema Draft 2020-12. `status` describes adoption, not application health. `owner` identifies the accountable maintainer; `tracking_issue` links the work. Exceptions belong in the app's own tracked record and must have the fields required by the schema.

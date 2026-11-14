@@ -1,3 +1,5 @@
+English | [Português](ci-devsecops.pt-BR.md)
+
 # CI and DevSecOps outcomes
 
 Each app documents its validation commands and ownership. CI should cover repository hygiene, secret detection, pull request metadata, relevant build and tests, static analysis, dependencies and software bills of materials when applicable. Identify required versus informational checks and make scanner execution failures visible separately from findings. Record accepted findings, owners and follow-up issues; do not claim coverage without evidence.
