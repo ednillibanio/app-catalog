@@ -87,7 +87,7 @@ apps/<spa-app>/src/
 
 ### 3.2 Features e hooks de dados
 
-Cada recurso do backend que o app gerencia tem um par `features/<feature>/` e `pages/<feature>/`. O `features/<feature>/api.ts` contém hooks do TanStack Query e nada mais:
+Cada recurso do backend que o app gerencia tem um par `features/<feature>/` e `pages/<feature>/`. O `features/<feature>/api.ts` contém hooks do TanStack Query e os pequenos auxiliares que eles compartilham, como montadores de caminho, e nada mais:
 
 ```ts
 import { apiClient } from "@/lib/api";
@@ -95,6 +95,13 @@ import type { ItemCreateRequest, ItemDto, PagedResponse } from "@<scope>/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const ITEMS_KEY = "items";
+
+export function itemPath(id: number): string {
+  if (!Number.isSafeInteger(id) || id <= 0) {
+    throw new Error(`Invalid item id: ${id}`);
+  }
+  return `/api/admin/items/${encodeURIComponent(id)}`;
+}
 
 export function useItems(page = 0, size = 20) {
   return useQuery({
@@ -109,7 +116,7 @@ export function useItems(page = 0, size = 20) {
 export function useItem(id: number) {
   return useQuery({
     queryKey: [ITEMS_KEY, "detail", id],
-    queryFn: () => apiClient.get<ItemDto>(`/api/admin/items/${encodeURIComponent(id)}`),
+    queryFn: () => apiClient.get<ItemDto>(itemPath(id)),
   });
 }
 
@@ -130,7 +137,7 @@ Regras:
 4. As variantes de uma chave de query são tuplas que começam pela constante e por um tipo: `[ITEMS_KEY, "list", page, size]`, `[ITEMS_KEY, "detail", id]`. Assim, invalidar `[ITEMS_KEY]` cobre todas as variantes.
 5. Toda mutação invalida, no `onSuccess`, as chaves de query que afeta; não dependa de um `refetch` manual.
 6. Os tipos do backend vêm de `@<scope>/types` (§5.1); não os declare no app.
-7. O hook escreve a URL diretamente, o que o deixa autocontido; não existe uma camada separada de "endpoints". Query strings são montadas com `URLSearchParams`, e valores de caminho são validados e codificados como diz a §8.
+7. O hook escreve a URL diretamente, o que o deixa autocontido; não existe uma camada separada de "endpoints". Query strings são montadas com `URLSearchParams`, e valores de caminho são validados e codificados como diz a §8, como faz o `itemPath`.
 8. Componentes nunca chamam o cliente de API diretamente; eles usam um hook.
 
 ### 3.3 Formulários
@@ -442,8 +449,7 @@ O `ApiError` carrega o status HTTP e uma mensagem.
 export function useDeleteItem(onConflict: () => void) {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (id: number) =>
-      apiClient.delete<void>(`/api/admin/items/${encodeURIComponent(id)}`),
+    mutationFn: (id: number) => apiClient.delete<void>(itemPath(id)),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: [ITEMS_KEY] }),
     onError: (error) => {
       if (error instanceof ApiError && error.status === 409) {
@@ -454,7 +460,7 @@ export function useDeleteItem(onConflict: () => void) {
 }
 ```
 
-Este hook fica em `features/items/api.ts`, junto dos outros, e também importa `ApiError` de `@<scope>/api-client`.
+Este hook fica em `features/items/api.ts`, junto dos outros, usa o `itemPath` da §3.2 e também importa `ApiError` de `@<scope>/api-client`.
 
 ## 8. Segurança
 

@@ -109,6 +109,8 @@ Every numbered subsection of the source is either in the catalog or stays local.
 | `codex-review`, round `13-frontend-005` | CHANGES REQUESTED, 2 medium and 1 low findings, all fixed in both languages: §8 rule 1 states Vite's default exposure (the `VITE_` prefix and built-in values) and warns that `define` or a changed prefix can inject more; the opening paragraph states F3 (each application chooses its identifier language and keeps one vocabulary); the 403 explanation says a login redirect can loop, not that it always does |
 | `codex-review`, round `13-frontend-006` | CHANGES REQUESTED, 1 medium finding, fixed in both languages: `encodeURIComponent` leaves `.` and `..` unchanged, so §8 rule 2 now requires validating a path value against its expected format (rejecting dot segments) before encoding it; §3.2 rule 7, the anti-pattern row and the checklist point to it |
 | `codex-review`, round `13-frontend-007` | APPROVE, no findings |
+| `codex-review` pre-push, round `13-prepush-001` on `7e83055` | CHANGES REQUESTED, 1 medium finding, fixed in both languages: the detail and delete examples encoded a `number` ID without runtime validation; a new `itemPath` helper in §3.2 rejects non-integer and non-positive IDs before encoding, and both hooks use it. Type-check, pair comparison, `check_docs` and pre-commit rerun: pass |
+| `codex-review` pre-push, round `13-prepush-002` on the fix | APPROVE; 2 low findings fixed: §3.2 allows the small helpers the hooks share (both languages); a missing sentence break in the English note after the §7.2 example |
 
 ### Out-of-scope findings for the source repository's maintainer
 
