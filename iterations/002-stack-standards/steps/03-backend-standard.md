@@ -1,6 +1,6 @@
 # Stage 03: backend standard
 
-Status: `doing`
+Status: `done`
 
 ## Objective and scope
 
@@ -120,7 +120,6 @@ Every numbered subsection of the source is either in the catalog or stays local.
 
 [#20](https://github.com/ednillibanio/app-catalog/pull/20), from commit `46465ce`. `gh pr checks 20`: no hosted checks until [#8](https://github.com/ednillibanio/app-catalog/issues/8).
 
-### Pending
+### Merge and pending
 
-- Merge #20 (with approval); then this stage becomes `done`.
-- Close #18 and tick stages 02 and 03 in the #16 checklist (each with its own approval).
+Merged with the maintainer's approval on 2026-11-14 as squash commit `87afa36` on `main`. With separate approvals, #12 and #18 were closed with a comment and stages 01–03 were ticked in the #16 checklist. Nothing pending.
