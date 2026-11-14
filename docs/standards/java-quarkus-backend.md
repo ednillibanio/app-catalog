@@ -205,7 +205,9 @@ Keep a small set of shared exceptions in the shared module and map them to HTTP 
 | `PolicyViolationException` | 400 | Valid input that breaks a business rule in the current context |
 | `AccessDeniedException` | 403 | Authenticated user without access to the resource |
 | `IllegalStateException` | 409 | Invalid state transition |
-| `ConstraintViolationException` (Bean Validation) | 400 | Invalid request input |
+| `ConstraintViolationException` (Bean Validation) on request input | 400 | Invalid parameters or body of a resource method |
+
+A Bean Validation violation elsewhere, such as on a service call or a return value, is a server defect and returns 500. Quarkus's built-in handling makes this distinction; a custom mapper for `ConstraintViolationException` keeps it, for example by returning 400 only for violations on resource-method parameters.
 
 Do not create module-specific exceptions unless the domain needs the concept; such an exception extends a shared one so it keeps its HTTP status. The application defines the error body (for example `{ "status": 404, "message": "…" }`) and uses it for every mapped exception.
 

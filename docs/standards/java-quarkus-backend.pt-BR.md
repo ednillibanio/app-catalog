@@ -205,7 +205,9 @@ Mantenha um conjunto pequeno de exceções compartilhadas no módulo compartilha
 | `PolicyViolationException` | 400 | Entrada válida que viola uma regra de negócio no contexto atual |
 | `AccessDeniedException` | 403 | Usuário autenticado sem acesso ao recurso |
 | `IllegalStateException` | 409 | Transição de estado inválida |
-| `ConstraintViolationException` (Bean Validation) | 400 | Entrada inválida na requisição |
+| `ConstraintViolationException` (Bean Validation) na entrada da requisição | 400 | Parâmetros ou corpo inválidos de um método de resource |
+
+Uma violação de Bean Validation em outro ponto, como numa chamada de service ou num valor de retorno, é um defeito do servidor e retorna 500. O tratamento padrão do Quarkus faz essa distinção; um mapeador próprio para `ConstraintViolationException` a mantém, por exemplo retornando 400 só para violações nos parâmetros de métodos de resource.
 
 Não crie exceções específicas de um módulo, a menos que o domínio precise do conceito; essa exceção estende uma compartilhada para manter o status HTTP. A aplicação define o corpo de erro (por exemplo, `{ "status": 404, "message": "…" }`) e o usa em toda exceção mapeada.
 

@@ -112,6 +112,8 @@ Every numbered subsection of the source is either in the catalog or stays local.
 | `codex-review`, round `12-backend-014` | CHANGES REQUESTED, 1 finding: the plan reviews were not recorded; added above |
 | `codex-review`, round `12-backend-015` | APPROVE, no findings |
 | `codex-review` pre-push, round `12-prepush-001` on `46465ce` | APPROVE, no findings |
+| `codex-review` pre-merge, round `12-premerge-001` on `fb161dc` | CHANGES REQUESTED, 2 findings, fixed: only request-input Bean Validation violations map to 400, other violations stay 500 (§3.3, both languages); the iteration table links #20 |
+| `codex-review` pre-merge, round `12-premerge-002` on the fixes | APPROVE, no findings |
 | `technical-documentation` audit (pre-push) | Not rerun: the content is the stage-end audit's plus the fixes reviewed by Codex rounds 008–015 |
 
 ### Pull request
