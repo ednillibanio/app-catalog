@@ -31,8 +31,8 @@ Approved by the maintainer on 2026-11-14.
 | Stage | Status | Plan | Pull requests |
 | --- | --- | --- | --- |
 | 01 | `done` | [Bilingual docs](steps/01-bilingual-docs.md) ([#11](https://github.com/ednillibanio/app-catalog/issues/11)) | [#17](https://github.com/ednillibanio/app-catalog/pull/17) |
-| 02 | `doing` | [Independent catalog](steps/02-independent-catalog.md) ([#18](https://github.com/ednillibanio/app-catalog/issues/18)) | pending |
-| 03 | `todo` | [Backend standard](steps/03-backend-standard.md) ([#12](https://github.com/ednillibanio/app-catalog/issues/12)) | pending |
+| 02 | `done` | [Independent catalog](steps/02-independent-catalog.md) ([#18](https://github.com/ednillibanio/app-catalog/issues/18)) | [#19](https://github.com/ednillibanio/app-catalog/pull/19) |
+| 03 | `doing` | [Backend standard](steps/03-backend-standard.md) ([#12](https://github.com/ednillibanio/app-catalog/issues/12)) | pending |
 | 04 | `todo` | [Frontend standard](steps/04-frontend-standard.md) ([#13](https://github.com/ednillibanio/app-catalog/issues/13)) | pending |
 | 05 | `todo` | [Dev environment standard](steps/05-dev-environment-standard.md) ([#14](https://github.com/ednillibanio/app-catalog/issues/14)) | pending |
 
