@@ -11,3 +11,7 @@
 | [CI e DevSecOps](ci-devsecops.pt-BR.md) | Resultados exigidos e limite da implementação |
 
 O mantenedor é o dono destes padrões. Um repositório declara requisitos locais mais estritos nas suas próprias instruções para agentes e notas de revisão; esses requisitos continuam valendo lá. Toda exceção deve identificar dono, motivo, escopo, data de expiração ou de revisão e issue de acompanhamento.
+
+## Como usar estes padrões
+
+Um repositório de aplicação aponta para os padrões que segue, no idioma que usa, e pode fixar um commit ou uma tag. Ele registra suas regras locais mais estritas e suas exceções no próprio repositório. Este repositório não lista nem acompanha as aplicações que o usam.
