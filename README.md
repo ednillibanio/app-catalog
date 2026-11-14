@@ -1,3 +1,5 @@
+English | [Português](README.pt-BR.md)
+
 # Personal app catalog
 
 Standards and lightweight inventory for applications maintained by ednillibanio. The catalog states expected outcomes; implementation belongs to each application and, once published, the personal `ci-workflows` repository. No reusable workflow is available from this catalog.
@@ -12,6 +14,6 @@ The catalog uses `main`. App repositories can retain stricter local rules and th
 
 ## Validation
 
-From the repository root, validate `catalog/apps/*.json` against `catalog/app.schema.json` with a JSON Schema Draft 2020-12 validator. Check local Markdown links and verify iteration links and evidence before review. See [catalog validation](catalog/README.md). The schema and entry are data, not evidence of adoption.
+From the repository root, validate `catalog/apps/*.json` against `catalog/app.schema.json` with a JSON Schema Draft 2020-12 validator. Check local Markdown links and language pairs with `python3 scripts/check_docs.py` (see the [operator guide](docs/operations/operator-guide.md#maintain-both-languages)) and verify iteration links and evidence before review. See [catalog validation](catalog/README.md). The schema and entry are data, not evidence of adoption.
 
 Licensed under [Apache License 2.0](LICENSE).

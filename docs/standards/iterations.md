@@ -1,3 +1,5 @@
+English | [Português](iterations.pt-BR.md)
+
 # Iteration workflow
 
 A numbered iteration has one master issue and an `iterations/NNN-topic/README.md` with scope, decisions, stages and closure criteria. Each stage has a file under `steps/`, with scope, exclusions, validation, outcome and evidence. The files are the source of truth; the issue tracks progress. Use `todo`, `doing`, `blocked`, `done` and `skipped`, recording reasons for blocked or skipped work.

@@ -1,3 +1,5 @@
+English | [Português](operator-guide.pt-BR.md)
+
 # Operator guide
 
 This repository defines standards and records which personal applications adopt them. It does not run application builds or host reusable CI workflows; those belong to each app and the published `ci-workflows` repository. This catalog consumes its versioned pre-commit hooks locally.
@@ -47,11 +49,23 @@ for entry in Path("catalog/apps").glob("*.json"):
 PY
 ```
 
-A successful run prints each valid entry and exits with status 0. Invalid JSON or a schema violation raises an error and exits nonzero. Validate local Markdown links as part of review; this repository does not yet provide an automated link-check command.
+A successful run prints each valid entry and exits with status 0. Invalid JSON or a schema violation raises an error and exits nonzero. Validate local Markdown links as part of review with the check in [Maintain both languages](#maintain-both-languages); no CI job runs it yet.
 
 ## Maintain standards and iterations
 
 Start with [the standards index](../standards/README.md). The iteration workflow defines plan files, status values, stage approvals, evidence and closure. Keep accepted unplanned work in [`iterations/BACKLOG.md`](../../iterations/BACKLOG.md), with an owner and issue. Update both the iteration record and its master issue checklist when stage status changes. Keep pending work visible until resolved; do not mark a stage done while its acceptance criteria remain unmet.
+
+## Maintain both languages
+
+Reader-facing documents exist in English (`name.md`, canonical) and Brazilian Portuguese (`name.pt-BR.md`); the [documentation standard](../standards/documentation.md#languages) defines which files are bilingual and how they link. When you change one, change the other in the same pull request with the same meaning. To add a document, create both files, each starting with the language switch, and link the Portuguese one from the other Portuguese pages.
+
+Python 3 and Git are required. From the repository root, check the language pairs, relative links and anchors of all Markdown files, including untracked ones:
+
+```sh
+python3 scripts/check_docs.py
+```
+
+A clean run prints `OK:` with the number of language pairs and exits with status 0. Otherwise it lists each missing pair, missing language switch, heading-count mismatch, broken link or anchor, or Portuguese page that links to the English version of a translated document, and exits with status 1. It understands inline links (with an optional title and one level of parentheses in the destination), angle-bracket destinations and reference definitions, decodes percent-encoded paths and anchors, and ignores fenced code blocks and inline code. Indented code blocks are read as text and Setext headings (underlined with `===` or `---`) are not recognized, so use fenced blocks and `#` headings. The check compares structure, not meaning: review each changed pair side by side before requesting review.
 
 ## Troubleshooting
 
@@ -59,7 +73,8 @@ Start with [the standards index](../standards/README.md). The iteration workflow
 - Schema validation fails: check required fields and the allowed `status` values in [`catalog/app.schema.json`](../../catalog/app.schema.json); validate URLs and exception fields.
 - An adoption status looks stale: inspect the tracking issue and ask its owner to update the catalog with current evidence.
 - A link is broken: correct the source Markdown or catalog URL and rerun the relevant validation before opening the PR.
+- The language check reports a missing pair or a heading-count mismatch: create or complete the other language's file so both have the same sections, then rerun the check.
 
 ## Current limitations
 
-The catalog has no automated CI or link checker. Its pre-commit hooks run locally; they do not replace a GitHub Actions workflow. The reusable workflows are published, but a real sapl-next consumer PR remains to be validated in stage 03. Linux and Windows validation are not claimed.
+The catalog has no automated CI. Its pre-commit hooks and the language and link check (`scripts/check_docs.py`) run locally; they do not replace a GitHub Actions workflow. The reusable workflows are published, but a real sapl-next consumer PR remains to be validated in stage 03. Linux and Windows validation are not claimed.
