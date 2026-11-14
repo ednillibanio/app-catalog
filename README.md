@@ -4,7 +4,7 @@ English | [Português](README.pt-BR.md)
 
 Reusable standards for application repositories maintained by ednillibanio. The repository is public and independent: application repositories link to the standards they follow, and this repository does not list or track them. The standards state expected outcomes; implementation belongs to each application and to the personal `ci-workflows` repository. No reusable workflow is available from this repository.
 
-- [Standards](docs/standards/README.md) cover contribution, iterations, review, documentation and CI/DevSecOps, and explain how an application uses them.
+- [Standards](docs/standards/README.md) cover contribution, iterations, review, documentation, CI/DevSecOps and the Java/Quarkus backend, and explain how an application uses them.
 - [Operator guide](docs/operations/operator-guide.md) explains how to use and maintain this repository.
 - [Iterations](iterations/README.md) track planned work and evidence.
 - [Provenance](PROVENANCE.md) records the design references.

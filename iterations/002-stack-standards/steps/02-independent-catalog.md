@@ -1,6 +1,6 @@
 # Stage 02: independent catalog
 
-Status: `doing`
+Status: `done`
 
 ## Objective and scope
 
@@ -55,7 +55,7 @@ Renaming this repository; the content of the standards.
 | `codex-review` plan, rounds `plano-18-independence-001`..`005` | Rounds 001–004 CHANGES REQUESTED (missing references, history kept as dated evidence, traceable provenance, link sequencing, executable searches), each fixed; round 005 APPROVE |
 | `codex-review` change, rounds `18-independence-006`..`008` (the counter is shared with the plan rounds) | 006: the backend stub lacked E1–E5 and the source revision, and the issue edits were out of scope; 007: the stubs dropped the source-history check; both fixed. 008 APPROVE, no findings |
 
-### Pending
+### Closure
 
-- Edit the bodies of #10 and #12–#16 and the #16 checklist (each with its own approval).
-- Commit, push, pull request and merge, each with its own approval; then this stage becomes `done`.
+- The bodies of #10 and #12–#16 were edited with approval and name no consuming application; #16 lists this stage.
+- Merged through [#19](https://github.com/ednillibanio/app-catalog/pull/19) as `9525a88`. The pull request used `Refs #18`, so #18 stays open until the maintainer approves closing it; ticking this stage in the #16 checklist also needs approval. Both are recorded in stage 03.

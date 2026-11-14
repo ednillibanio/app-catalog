@@ -9,6 +9,7 @@ English | [Português](README.pt-BR.md)
 | [Review](review.md) | Review points and local exceptions |
 | [Documentation](documentation.md) | Evidence-based, maintainable docs |
 | [CI and DevSecOps](ci-devsecops.md) | Required outcomes and implementation boundary |
+| [Java/Quarkus backend](java-quarkus-backend.md) | Layers, persistence, REST, security and tests for Java/Quarkus/Maven services |
 
 The maintainer owns these standards. A repository declares stricter local requirements in its own agent instructions and review notes; those requirements continue to apply there. Exceptions must identify owner, reason, scope, expiry or review date, and tracking issue.
 

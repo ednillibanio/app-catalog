@@ -9,6 +9,7 @@
 | [Revisão](review.pt-BR.md) | Pontos de revisão e exceções locais |
 | [Documentação](documentation.pt-BR.md) | Documentação baseada em evidências e fácil de manter |
 | [CI e DevSecOps](ci-devsecops.pt-BR.md) | Resultados exigidos e limite da implementação |
+| [Backend Java/Quarkus](java-quarkus-backend.pt-BR.md) | Camadas, persistência, REST, segurança e testes de serviços Java/Quarkus/Maven |
 
 O mantenedor é o dono destes padrões. Um repositório declara requisitos locais mais estritos nas suas próprias instruções para agentes e notas de revisão; esses requisitos continuam valendo lá. Toda exceção deve identificar dono, motivo, escopo, data de expiração ou de revisão e issue de acompanhamento.
 
