@@ -173,7 +173,7 @@ Recomenda-se um comando de bootstrap: um único comando que leva um clone novo a
 4. Uma mudança de estado global de que precise (por exemplo, um contexto de contêineres) vale só para os próprios comandos, ou é desfeita quando ele termina.
 
 ```bash
-if [[ ! -e .env ]]; then
+if [[ ! -e .env && ! -L .env ]]; then
   cp .env.example .env
   chmod 600 .env
   echo "Created .env from .env.example."

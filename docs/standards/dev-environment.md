@@ -173,7 +173,7 @@ A bootstrap command is recommended: one command that takes a fresh clone to a wo
 4. A change to global state that it needs (for example, a container context) applies only to its own commands, or is restored when it exits.
 
 ```bash
-if [[ ! -e .env ]]; then
+if [[ ! -e .env && ! -L .env ]]; then
   cp .env.example .env
   chmod 600 .env
   echo "Created .env from .env.example."
