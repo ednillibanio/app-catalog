@@ -11,6 +11,7 @@
 | [CI e DevSecOps](ci-devsecops.pt-BR.md) | Resultados exigidos e limite da implementação |
 | [Backend Java/Quarkus](java-quarkus-backend.pt-BR.md) | Camadas, persistência, REST, segurança e testes de serviços Java/Quarkus/Maven |
 | [Frontend React/Vite](react-vite-frontend.pt-BR.md) | Estrutura, acesso a dados, formulários, tokens de design, segurança e testes de apps React/Vite num monorepo pnpm |
+| [Ambiente de desenvolvimento local](dev-environment.pt-BR.md) | Ambientes suportados, `.env`, setup, doctor, comandos comuns e estado de validação do guia de cada ambiente |
 
 O mantenedor é o dono destes padrões. Um repositório declara requisitos locais mais estritos nas suas próprias instruções para agentes e notas de revisão; esses requisitos continuam valendo lá. Toda exceção deve identificar dono, motivo, escopo, data de expiração ou de revisão e issue de acompanhamento.
 

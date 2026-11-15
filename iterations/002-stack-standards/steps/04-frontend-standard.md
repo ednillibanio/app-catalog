@@ -1,6 +1,6 @@
 # Stage 04: frontend standard
 
-Status: `doing`
+Status: `done`
 
 ## Objective and scope
 
@@ -111,6 +111,8 @@ Every numbered subsection of the source is either in the catalog or stays local.
 | `codex-review`, round `13-frontend-007` | APPROVE, no findings |
 | `codex-review` pre-push, round `13-prepush-001` on `7e83055` | CHANGES REQUESTED, 1 medium finding, fixed in both languages: the detail and delete examples encoded a `number` ID without runtime validation; a new `itemPath` helper in §3.2 rejects non-integer and non-positive IDs before encoding, and both hooks use it. Type-check, pair comparison, `check_docs` and pre-commit rerun: pass |
 | `codex-review` pre-push, round `13-prepush-002` on the fix | APPROVE; 2 low findings fixed: §3.2 allows the small helpers the hooks share (both languages); a missing sentence break in the English note after the §7.2 example |
+| `technical-documentation` audit (pre-merge) | No findings: the `8bc4a7e` diff checked against the type-checked examples and the §3.2 reference |
+| `codex-review --base origin/main` pre-merge, round `13-premerge-001` on head `8bc4a7e` | APPROVE, no findings; `check_docs` rerun: pass |
 
 ### Out-of-scope findings for the source repository's maintainer
 
@@ -120,6 +122,12 @@ Every numbered subsection of the source is either in the catalog or stays local.
 - Its standard redirects 403 to login.
 - Its standard does not cover the real-time handlers and client stores its apps have.
 
-### Pending
+With the maintainer's approval, these were recorded in that repository's own issue tracker: one issue for the JSON-LD escaping (security) and one for the triage of the others, together with stale records found there.
 
-Commit, push, pull request, pre-push and pre-merge reviews, and merge, each with approval.
+### Pull request
+
+[#21](https://github.com/ednillibanio/app-catalog/pull/21), two commits (`7e83055`, `8bc4a7e`). No hosted checks exist yet (#8); `gh pr checks 21` reported none.
+
+### Merge and pending
+
+Merged with the maintainer's approval on 2026-11-14 as squash commit `9117779` on `main`. With separate approvals, #13 was closed with a comment and stage 04 was ticked in the #16 checklist. Nothing pending.
