@@ -1,6 +1,6 @@
 # Stage 05: local development environment standard
 
-Status: `doing`
+Status: `done`
 
 ## Objective and scope
 
@@ -98,6 +98,8 @@ No application-specific name or data in the standard (case-insensitive search wi
 | `codex-review` pre-push, round `14-prepush-002` | CHANGES REQUESTED, 1 medium and 1 low findings, fixed in both languages: §3 rule 5 limits names to letters, digits and underscores, not starting with a digit (a name with `-` is accepted by Compose but breaks the shell, tested); the doctor's line-ending check requires a readable regular file and passes only on `grep` exit status 1 |
 | `codex-review` pre-push, round `14-prepush-003` | APPROVE; 1 low finding fixed in both languages: a dangling `.env` symlink no longer counts as an absent `.env`; tested |
 | `codex-review` pre-merge, round `14-premerge-001` on head `b3c2889` | APPROVE; 1 low finding fixed in both languages: the bootstrap example treats a dangling `.env` symlink as existing, so `cp` cannot create its target; tested. `gh pr checks 22`: no checks reported (#8) |
+| `codex-review` pre-merge, round `14-premerge-002` on head `8ee5e7f` | APPROVE; 1 low finding: this record and the iteration README still listed the pull request as pending. Fixed after the merge in this closure record. `gh pr checks 22`: no checks reported (#8) |
+| `codex-review` of the stage and iteration closure records, round `14-close-001` | APPROVE, no findings: the iteration closure criteria are met and the records match the stage 04 format |
 
 ### Out-of-scope findings for the source repository's maintainer
 
@@ -111,6 +113,10 @@ No application-specific name or data in the standard (case-insensitive search wi
 
 For the maintainer's public `ci-workflows` repository: the hook names and descriptions in `.pre-commit-hooks.yaml` are in Portuguese, while §10 asks for English tooling.
 
-### Pending
+### Pull request
 
-Push, pull request, pre-merge review and merge, each with approval.
+[#22](https://github.com/ednillibanio/app-catalog/pull/22), three commits (`864c611`, `b3c2889`, `8ee5e7f`). No hosted checks exist yet (#8); `gh pr checks 22` reported none.
+
+### Merge and pending
+
+Merged with the maintainer's approval on 2026-11-14 as squash commit `ea93180` on `main`. Closing #14 with a comment and ticking stage 05 in the #16 checklist each need a separate approval. The out-of-scope findings above belong to other repositories and are reported there.

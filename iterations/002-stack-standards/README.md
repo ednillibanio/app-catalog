@@ -1,6 +1,6 @@
 # Iteration 002: stack standards
 
-Status: `doing`
+Status: `done`
 Master issue: [#16](https://github.com/ednillibanio/app-catalog/issues/16)
 
 ## Objective and origin
@@ -34,7 +34,7 @@ Approved by the maintainer on 2026-11-14.
 | 02 | `done` | [Independent catalog](steps/02-independent-catalog.md) ([#18](https://github.com/ednillibanio/app-catalog/issues/18)) | [#19](https://github.com/ednillibanio/app-catalog/pull/19) |
 | 03 | `done` | [Backend standard](steps/03-backend-standard.md) ([#12](https://github.com/ednillibanio/app-catalog/issues/12)) | [#20](https://github.com/ednillibanio/app-catalog/pull/20) |
 | 04 | `done` | [Frontend standard](steps/04-frontend-standard.md) ([#13](https://github.com/ednillibanio/app-catalog/issues/13)) | [#21](https://github.com/ednillibanio/app-catalog/pull/21) |
-| 05 | `doing` | [Dev environment standard](steps/05-dev-environment-standard.md) ([#14](https://github.com/ednillibanio/app-catalog/issues/14)) | pending |
+| 05 | `done` | [Dev environment standard](steps/05-dev-environment-standard.md) ([#14](https://github.com/ednillibanio/app-catalog/issues/14)) | [#22](https://github.com/ednillibanio/app-catalog/pull/22) |
 
 Each stage requires its own approval, validation, review, pull request and recorded evidence.
 
@@ -46,4 +46,10 @@ Close the iteration when every stage is `done` or `skipped` with a reason, all p
 
 ## Result and pending work
 
-Pending.
+Closed on 2026-11-14 with the maintainer's authorization. Every stage is `done`:
+
+- stage 01: the reader-facing docs are bilingual (#17);
+- stage 02: the catalog is independent of the applications that use it (#19);
+- stages 03–05: the backend (#20), frontend (#21) and local development environment (#22) standards, in English and Portuguese.
+
+Pending work, each with an owner and an issue, is listed in the [backlog](../BACKLOG.md): CI for this repository (#8), the template repository (#15) and the evaluation of an app `AGENTS.md` standard (#10). Findings about the source application and the `ci-workflows` repository are recorded in the stage files and reported in those repositories.
